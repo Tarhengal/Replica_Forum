@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/thread.css" media="screen" type="text/css" />
+    <title>thread</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<body onload="onLoad()">
+
+    <div id="fond">
+
+        <div id="entete">
+
+            <div id="pagePrincipale">
+                <a onclick="window.location.href = 'http://localhost:3000/mainpage'">
+                    <img id="logo" src="images/logo.png" />
+                </a>
+            </div>
+
+            <h1 id="titre" style="color: #ffff;"></h1>
+
+        </div>
+
+        <div id="contenue">
+
+            <div id="thread">
+
+                <h2 id="contenu"></h2>
+                <span id="nom_createur"></span>
+
+            </div>
+
+            <div id="poste">
+
+                <label style="color: #ffff;"><b>Contenu de votre message</b></label>
+                <textarea type="text" id="message" placeholder="Ecrivez votre message"></textarea>
+                <button onclick="poster()">Poster message</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    
+    <ul id="feed"></ul>
+    
+
+</body>
+</html>
+
+<script>
+
+    function onLoad() {
+
+        // On récupère l'id du thread
+        const url = new URLSearchParams(window.location.search);
+        const thread = url.get('id');
+        axios.get(`http://localhost:3000/api/thread/${thread}`).then(function (response) {
+            document.getElementById("titre").innerHTML = response.data.titre;
+            document.getElementById("contenu").innerHTML = response.data.contenu;
+            document.getElementById("nom_createur").innerHTML = response.data.nom_createur;
+            let messages = response.data.messages;
+            for (const item of messages){
+                document.getElementById("feed").innerHTML += `<div id="messages">${item.message} par ${item.username}</div>`;
+            }
+        })
+    }
+
+    async function poster() {
+        const url = new URLSearchParams(window.location.search);
+        const thread = url.get('id');
+        const message = document.getElementById("message").value;
+        let response = await axios.get("http://localhost:3000/api/session");
+        const username =response.data.username;
+        await axios.put(`http://localhost:3000/api/thread/${thread}`, {messages: {message : message, username : username}});
+        
+    }
+
+</script>

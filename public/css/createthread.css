@@ -1,0 +1,60 @@
+body {
+    background: #0e235c;
+}
+
+#fond {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 8px;
+    border-width: 2px;
+}
+
+#entete {
+    display: flex;
+    margin: 10px;
+    height: 50;
+    border-radius: 8px;
+    border-width: 2px;
+    order :1;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+}
+
+#pagePrincipale {
+    flex-grow: 1;
+    height: 20px;
+}
+
+#navigation {
+    display: flex;
+    flex-grow: 50;
+    justify-content: space-evenly;
+}
+
+#logo {
+    height: 300%;
+}
+
+#contenu {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    flex-grow: 2;
+    margin:0 auto;
+    border-radius: 8px;
+    border-width: 2px;
+    order :2;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom:0%;   
+    height: 50;
+    border-radius: 8px;
+    border-width: 2px;
+    order :5;
+    padding: 20px;
+}

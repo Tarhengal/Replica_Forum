@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/home.css" media="screen" type="text/css" />
+    <title>Home Page</title>
+</head>
+
+<!-- On importe SocketIO -->
+<script src="https://cdn.socket.io/4.4.1/socket.io.js"></script>
+
+<body>
+    <div id="fond">
+
+        <div id="entete">
+
+            <div id="pagePrincipale">
+                <a onclick="window.location.href = 'http://localhost:3000/home'">
+                    <img id="logo" src="images/logo.png" />
+                </a>
+            </div>
+
+            <div id="navigation">
+
+                <button onclick="window.location.href = 'http://localhost:3000/login'">Login</button>
+                <button onclick="window.location.href = 'http://localhost:3000/signup'">Sign Up</button>
+
+            </div>
+
+        </div>
+
+        <div id="contenu">
+
+            <h1 style="color: #ffff;">Bienvenue</h1>
+
+        </div>
+
+        <div id="footer">
+
+            
+
+        </div>
+
+    </div>
+
+
+</body>
+</html>
+<script>
+
+async function deleteAllUsers(){
+        
+        axios.post('http://localhost:3000/api/user', {nom : lname, prenom : fname, age : age, username : username, password : passwd}).then(function(response){
+            setTimeout(() => {
+                window.location.href = 'http://localhost:3000/login'
+            }, 3000);
+        });
+}
+
+</script>

@@ -1,0 +1,42 @@
+body {
+    background: #0e235c;
+}
+
+#fond {
+    display: flex;
+    flex-direction:column;
+    height: 100%;
+    border-radius: 8px;
+    border-width: 2px;
+}
+
+#entete {
+    display: flex;
+    margin: 10px;
+    height: 50;
+    border-radius: 8px;
+    border-width: 2px;
+    order :1;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+}
+
+#logo {
+    height: 300%;
+}
+
+#contenu {
+    display: flex;
+    flex-direction:row;
+}
+
+#delutilisateur {
+    display: flex;
+    flex-direction:column;
+}
+
+#delthread {
+    display: flex;
+    flex-direction:column;
+}

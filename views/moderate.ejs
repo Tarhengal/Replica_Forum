@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/moderate.css" media="screen" type="text/css" />
+    <title>Moderate</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<body>
+
+    <div id="fond">
+
+        <div id="entete">
+
+            <div id="pagePrincipale">
+                <a onclick="window.location.href = 'http://localhost:3000/mainpage'">
+                    <img id="logo" src="images/logo.png" />
+                </a>
+            </div>
+
+        </div>
+
+        <div id="contenu">
+
+            <div id="delutilisateur">
+
+                <input type="text" id="idUser" placeholder="Entrez l'id de l'utilisateur">
+                <button onclick="deleteUser()">Supprimer Utilisateur</button>
+                
+    
+                <button onclick="readAllUsers()">Récupérer tous les utilisateurs</button>
+                <br/>
+                <br/>
+                <label>
+                    Résultat:
+                </label>
+                <br/>
+                <textarea disabled id="resultatReadAllUsers" style="width: 500px;height: 100px"></textarea>
+    
+            </div>
+    
+            <div id="delthread">
+                
+                <input type="text" id="idThread" placeholder="Entrez l'id du thread">
+                <button onclick="deleteThread()">Supprimer Thread</button>
+                
+    
+                <button onclick="readAllThreads()">Récupérer tous les threads</button>
+                <br/>
+                <br/>
+                <label>
+                    Résultat:
+                </label>
+                <br/>
+                <textarea disabled id="resultatReadAllThreads" style="width: 500px;height: 100px"></textarea>
+    
+            </div>
+    
+
+        </div>
+
+        
+    </div>
+    
+    
+    
+
+
+
+</body>
+</html>
+<script>
+
+    function readAllUsers() {
+        axios.get("http://localhost:3000/api/users").then(function (response) {
+            document.getElementById("resultatReadAllUsers").innerHTML = JSON.stringify(response.data);
+        })
+    }
+
+    function readAllThreads() {
+        axios.get("http://localhost:3000/api/threads").then(function (response) {
+            document.getElementById("resultatReadAllThreads").innerHTML = JSON.stringify(response.data);
+        })
+    }
+
+    async function deleteUser(){
+        const idUser = document.getElementById("idUser").value;
+        await axios.delete(`http://localhost:3000/api/user/${idUser}`);    
+    }
+
+    async function deleteThread(){
+        const idThread = document.getElementById("idThread").value;
+        await axios.delete(`http://localhost:3000/api/thread/${idThread}`);    
+    }
+
+
+
+</script>
