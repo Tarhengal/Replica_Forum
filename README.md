@@ -23,7 +23,7 @@ Veuillez ensuite vous endre sur la page : http://localhost:3000/home
 
 ## Le Forum 
 
-![](public\images\homepage.png")
+![](public/images/homepage.png)
 
 Pendant toute la navigation sur le site, si vous cliquez sur le logo en haut à gauche, celui-ci vous redirigeras sur la page principale.
 
@@ -34,7 +34,7 @@ Vous pouvez aussi vous connecter en tant qu'administrateur (admin/admin) pour av
 
 Une fois sur la mainpage, 
 
-![](public\images\mainpage.png")
+![](public/images/mainpage.png)
 
 On peut directement voir les threads créés, et par qui ils ont été postés.
 
@@ -44,7 +44,7 @@ Quand on retourne sur la page principale, on voit bien que le thread a été cr�
 
 On va ensuite pouvoir réagir aux threads des autres utilisateurs. Pour cela il suffit de cliquer sur le thread qui nous intéresse, le site nous renvoie sur la page du thread.
 
-![](public\images\thread.png")
+![](public/images/thread.png)
 
 Ici on peut voir les réactions des autres utilisateurs sur ce thread, et on peut decider de réagir nous aussi.
 Il suffit d'écrire son message et de cliquer sur poster message.
@@ -52,7 +52,7 @@ Ensuite si on refresh la page, on voit bien que le message a été posté.
 
 Finalement, si on retourne sur la main page, et que l'on est connecté en tant qu'administrateur, on peut accéder à la page modération.
 
-![](public\images\moderate.png")
+![](public/images/moderate.png)
 
 Ici on peut récupérer tous les utilisateurs et les threads et les supprimer grace à leurs ID.
 
