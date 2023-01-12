@@ -1,0 +1,35 @@
+{
+  "name": "replica_forum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tarhengal/Replica_Forum.git"
+  },
+  "author": "Tarhengal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tarhengal/Replica_Forum/issues"
+  },
+  "homepage": "https://github.com/Tarhengal/Replica_Forum#readme",
+  "dependencies": {
+    "bulma": "^0.9.4",
+    "connect-redis": "^6.1.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mongoose": "^6.8.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "react-bulma-components": "^4.1.0",
+    "redis": "^3.1.2",
+    "socket.io": "^4.5.4"
+  }
+}

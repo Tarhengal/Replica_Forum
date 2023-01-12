@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/mainpage.css" media="screen" type="text/css" />
+    <title>Main Page</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<body onload="onLoad()">
+
+    <div id="fond">
+
+        <div id="entete">
+
+            <div id="pagePrincipale">
+                <a onclick="window.location.href = 'http://localhost:3000/mainpage'">
+                    <img id="logo" src="images/logo.png" />
+                </a>
+                <h2 id="user"></h2>
+            </div>
+
+            <div id="navigation">
+                <button onclick="window.location.href = 'http://localhost:3000/createthread'">Creer un thread</button>
+                <button onclick="disconnect()">Disconnect</button>
+                <button onclick="window.location.href = 'http://localhost:3000/moderate'">Moderation</button>
+            </div>
+
+        </div>
+
+        <div id="contenu">
+
+            <ul id="feed"></ul>
+
+        </div>
+
+        <div id="footer">
+
+        </div>
+
+    </div>  
+    
+
+</body>
+</html>
+<script>
+    function ouvrirThread(code){
+        window.location.href = "http://localhost:3000/thread?id="+code;
+    }
+    async function readAll(){
+        return await axios.get('http://localhost:3000/api/threads');
+    }
+    async function onLoad(){
+        axios.get("http://localhost:3000/api/session").then(function (response) {
+            const username = response.data.username;
+            document.getElementById("user").innerHTML += `Bienvenue ${username} !`;
+        });
+    
+        axios.get("http://localhost:3000/api/threads").then(function (response) {
+            for (let i = 0; i < response.data.length; i++){
+                const titre = response.data[i].titre;
+                const contenu = response.data[i].contenu;
+                const username = response.data[i].nom_createur;
+                const id = response.data[i]._id;
+                document.getElementById("feed").innerHTML += `<div id="thread" onclick="ouvrirThread('${id}')"><span style='font-size: 35px'>${titre}</span><br></br>${contenu}<br></br>par ${username}</div>`;
+            }
+        });
+
+    }
+    async function disconnect(){
+        axios.delete('http://localhost:3000/api/logout').then(function(response){
+            setTimeout(() => {
+                window.location.href = 'http://localhost:3000/home'
+            }, 1000);
+        });
+    }
+    
+</script>

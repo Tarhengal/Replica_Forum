@@ -1,0 +1,67 @@
+<html>
+    <head>
+       <meta charset="utf-8">
+        <link href="/css/signup.css" rel="stylesheet"/>
+    </head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <body>
+
+        <div id="entete">
+
+            <div id="pagePrincipale">
+                <a onclick="window.location.href = 'http://localhost:3000/home'">
+                    <img id="logo" src="images/logo.png" />
+                </a>
+            </div>
+
+        </div>
+
+        <div id="container">
+            
+            
+            <h1>Connexion</h1>
+
+            <label><b>Nom</b></label>
+            <input type="text" id="name" placeholder="Entrez votre Nom">
+
+            <label><b>Prenom</b></label>
+            <input type="text" id="fname" placeholder="Entrez votre Prenom">
+
+            <label><b>Age</b></label>
+            <input type="text" id="age" placeholder="Entrez votre Age">
+            
+            <label><b>Nom d'utilisateur</b></label>
+            <input type="text" id="username" placeholder="Entrez votre Pseudo">
+
+            <label><b>Mot de passe</b></label>
+            <input type="password" id="passwd" placeholder="Entrez votre mot de passe">
+
+            <button onclick="signup()">Sign Up</button>
+            
+            
+        </div>
+    </body>
+</html>
+<script>
+    async function signup(){
+        const lname = document.getElementById("name").value;
+        const fname = document.getElementById("fname").value;
+        const age = document.getElementById("age").value;
+        const username = document.getElementById("username").value;
+        const passwd = document.getElementById("passwd").value;
+        axios.post('http://localhost:3000/api/user', {nom : lname, prenom : fname, age : age, username : username, password : passwd, isSuperUser : false}).then(function(response){
+            setTimeout(() => {
+                window.location.href = 'http://localhost:3000/login'
+            }, 1000);
+        });
+            
+    }
+    
+    async function readAll(){
+        const res = document.getElementById("res");
+        axios.get('http://localhost:3000/api/users').then(function (response) {
+            res.innerHTML = JSON.stringify(response.data);
+        });
+    }
+    
+</script>

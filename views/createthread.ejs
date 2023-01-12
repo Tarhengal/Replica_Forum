@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/createthread.css" media="screen" type="text/css" />
+    <title>create thread</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<body>
+
+    <div id="fond">
+
+        <div id="entete">
+
+            <div id="pagePrincipale">
+                <a onclick="window.location.href = 'http://localhost:3000/mainpage'">
+                    <img id="logo" src="images/logo.png" />
+                </a>
+            </div>
+
+            <div id="navigation">
+
+                <h1 style="color: #ffff;">Creation d'un thread</h1>
+
+            </div>
+
+        </div>
+
+        <div id="contenu">
+
+            <label style="color: #ffff;"><b>Titre du thread</b></label>
+            <input type="text" id="titre" placeholder="Titre"/>
+
+            <label style="color: #ffff;"><b>Contenu de votre thread</b></label>
+            <textarea type="text" id="thread" placeholder="Ecrivez votre thread" style="width: 500px;height: 100px"></textarea>
+
+            <button onclick="createThread()">Creer un thread</button>
+
+        </div>
+
+    </div>   
+
+
+</body>
+</html>
+
+<script>
+    async function createThread(){
+        const titre = document.getElementById("titre").value;
+        const thread = document.getElementById("thread").value;
+        let response = await axios.get("http://localhost:3000/api/session");    
+        axios.post('http://localhost:3000/api/thread', {titre : titre, contenu : thread, nom_createur : response.data.username}).then(function(response){
+            setTimeout(() => {
+                window.location.href = 'http://localhost:3000/mainpage'
+            }, 1000);
+        });
+            
+    }
+    
+</script>

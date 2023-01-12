@@ -1,0 +1,47 @@
+<html>
+    <head>
+       <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/login.css" media="screen" type="text/css" />
+    </head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <body>
+
+        <div id="entete">
+
+            <div id="pagePrincipale">
+                <a onclick="window.location.href = 'http://localhost:3000/home'">
+                    <img id="logo" src="images/logo.png" />
+                </a>
+            </div>
+
+        </div>
+
+        <div id="container">
+            
+            
+            <h1>Connexion</h1>
+            
+            <label><b>Nom d'utilisateur</b></label>
+            <input type="text" id="username" placeholder="Entrez votre Pseudo">
+
+            <label><b>Mot de passe</b></label>
+            <input type="password" id="passwd" placeholder="Entrez votre mot de passe">
+
+            <button onclick="login()">Login</button>
+              
+            
+        </div>
+    </body>
+</html>
+<script>
+    async function login(){
+        const username = document.getElementById("username").value;
+        const passwd = document.getElementById("passwd").value;
+        axios.post('http://localhost:3000/api/login', {username : username, password : passwd}).then(function(response){
+            setTimeout(() => {
+                window.location.href = 'http://localhost:3000/mainpage'
+            }, 1000);
+        });
+            
+    }
+</script>
