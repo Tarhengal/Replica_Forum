@@ -66,7 +66,7 @@
             document.getElementById("nom_createur").innerHTML = response.data.nom_createur;
             let messages = response.data.messages;
             for (const item of messages){
-                document.getElementById("feed").innerHTML += `<div id="messages">${item.message} par ${item.username}</div>`;
+                document.getElementById("feed").innerHTML += `<div id="messages">${item.message}<span style="color: #0e235c;"> Posté par ${item.username}<span/></div>`;
             }
         })
     }

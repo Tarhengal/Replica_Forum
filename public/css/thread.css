@@ -43,6 +43,8 @@ body {
 }
 
 #messages {
+    display: flex;
+    flex-direction: column;
     background: #dfdd67;
     width: 200px;
     border-radius: 2%;
