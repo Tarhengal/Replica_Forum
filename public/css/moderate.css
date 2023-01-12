@@ -12,6 +12,7 @@ body {
 
 #entete {
     display: flex;
+    flex-direction: row;
     margin: 10px;
     height: 50;
     border-radius: 8px;
@@ -22,6 +23,18 @@ body {
     top: 0;
 }
 
+#pagePrincipale {
+    flex-grow: 1;
+    height: 20px;
+    order: 1;
+    text-align: left;
+}
+
+#titre {
+    order: 2;
+    text-align:left;
+}
+
 #logo {
     height: 300%;
 }
@@ -29,6 +42,7 @@ body {
 #contenu {
     display: flex;
     flex-direction:row;
+    order: 3;
 }
 
 #delutilisateur {
